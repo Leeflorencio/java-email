@@ -1,8 +1,8 @@
 package App;
 
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class Teste {
@@ -29,6 +29,16 @@ public class Teste {
                     return new PasswordAuthentication(userName, password);
                 }
             });
+
+            Address[] toUser = InternetAddress.parse("devleticia19@gmail.com");
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(userName)); //quem esta enviando
+            message.setRecipients(Message.RecipientType.TO, toUser);// email de destino
+            message.setSubject("E-mail enviado por Java!!"); //Assunto do e-mail
+            message.setText("Olá programador(a), você está recebendo um e-mail enviado com Java :)");
+
+            Transport.send(message);
+
 
         }catch (Exception e){
             e.printStackTrace();
