@@ -7,8 +7,8 @@ import java.util.Properties;
 
 public class Teste {
 
-    private String userName = "";
-    private String password = "";
+    private String userName = "devleticia19@gmail.com";
+    private String password = "wycg voyn cmhc uwbc";
 
     @org.junit.Test
     public void testeEmail(){
@@ -16,6 +16,8 @@ public class Teste {
         try {
 
             Properties properties = new Properties();
+
+            properties.put("mail.smtp.ssl.trust", "*");
             properties.put("mail.smtp.auth", true); //autorização
             properties.put("mail.smtp.starttls", true); //autenticação
             properties.put("mail.smtp.host","smtp.gmail.com"); //servidor gmail google
@@ -30,12 +32,12 @@ public class Teste {
                 }
             });
 
-            Address[] toUser = InternetAddress.parse("devleticia19@gmail.com");
+            Address[] toUser = InternetAddress.parse("devleticia19@gmail.com, florenciolee63@gmail.com");
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(userName)); //quem esta enviando
             message.setRecipients(Message.RecipientType.TO, toUser);// email de destino
-            message.setSubject("E-mail enviado por Java!!"); //Assunto do e-mail
-            message.setText("Olá programador(a), você está recebendo um e-mail enviado com Java :)");
+            message.setSubject("Noite das mais mais - SAVE THE DATE 26-10!!"); //Assunto do e-mail
+            message.setText("Testando JavaMail" );
 
             Transport.send(message);
 
