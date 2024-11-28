@@ -1,2 +1,3 @@
-# java-email
-Projeto de envio de e-mails com Java
+# Java E-mail
+
+Projeto de envio de e-mails com Java. 
