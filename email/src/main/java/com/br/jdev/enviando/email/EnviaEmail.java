@@ -21,7 +21,7 @@ public class EnviaEmail {
         this.textoEmail = textoEmail;
     }
 
-    public void enviarEmail() throws Exception {
+    public void enviarEmail(boolean envioHtml) throws Exception {
         Properties properties = new Properties();
 
         properties.put("mail.smtp.ssl.trust", "*"); //autenticacao
@@ -40,11 +40,17 @@ public class EnviaEmail {
         });
 
         Address[] toUser = InternetAddress.parse(listaDestinatarios);
+
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(userName, nomeRemetente)); //quem esta enviando
         message.setRecipients(Message.RecipientType.TO, toUser);// email de destino
         message.setSubject(assuntoEmail); //Assunto do e-mail
-        message.setText(textoEmail);
+
+        if(envioHtml){
+            message.setContent(textoEmail, "text/html; charset=utf-8");
+        }else {
+            message.setText(textoEmail);
+        }
 
         Transport.send(message);
 

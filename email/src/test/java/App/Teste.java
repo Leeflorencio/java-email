@@ -10,10 +10,16 @@ public class Teste {
     @org.junit.Test
     public void testeEmail() throws Exception{
 
-        EnviaEmail enviaEmail = new EnviaEmail("Leticia Florêncio", "florenciolee63@gmail.com",
-                "Testando nova classe e-mail", "Esse e-mail é para teste da classe EnviaEmail");
+        StringBuilder stringBuilderTextoEmail = new StringBuilder();
 
-        enviaEmail.enviarEmail();
+        stringBuilderTextoEmail.append("<br/><h1>Olá, <br/><br/></h1>");
+        stringBuilderTextoEmail.append("Você está recebendo o acesso ao curso de Java <br/><br/>");
+
+
+        EnviaEmail enviaEmail = new EnviaEmail("Leticia Florêncio", "florenciolee63@gmail.com",
+                "Testando nova classe e-mail com HTML", "Teste html" + stringBuilderTextoEmail.toString());
+
+        enviaEmail.enviarEmail(true);
 
     }
 }
