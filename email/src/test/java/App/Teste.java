@@ -14,6 +14,12 @@ public class Teste {
 
         stringBuilderTextoEmail.append("<br/><h1>Olá, <br/><br/></h1>");
         stringBuilderTextoEmail.append("Você está recebendo o acesso ao curso de Java <br/><br/>");
+        stringBuilderTextoEmail.append("Para ter acesso clique no botão abaixo <br/><br/>");
+
+        stringBuilderTextoEmail.append("<a target=\"_blank\" href=\"http://projetojavaweb.com/certificado-aluno/login\">Acessar Portal do Aluno</a>");
+
+        stringBuilderTextoEmail.append("<br/><span style=\"font-size:14px\">Ass.: Leticia Florêncio");
+
 
 
         EnviaEmail enviaEmail = new EnviaEmail("Leticia Florêncio", "florenciolee63@gmail.com",
